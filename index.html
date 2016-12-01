@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mon environement</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <h1 class=" text-center"> Install PHP/RUBY/IONIC AND MORE! </h1>
+
+  <div class="container-fluid black">
+    <h2 class=" text-center">PHP5,MySQL, Appache && Wordpress</h2>
+    <h3 class=" text-center">Appache server</h3>
+    <div class="col-md-offset-3">
+      <div class="code">
+        <code class ='code'>sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove</code> <br>
+        <code class ='code'>sudo apt-get install apache2 apache2-utils </code><br>
+        <code class ='code'>sudo systemctl enable apache2</code><br>
+        <code class ='code'>sudo systemctl start apache2</code><br>
+      </div>
+      <p>Go check si ça marche ! :D :   <a href="http://localhost/">localhost</a> </p>
+      <h3 class="">MySQL DB</h3>
+      <div class="code">
+        <code class ='code'>sudo apt-get install mysql-client mysql-server</code><br>
+        <code class ='code'>sudo mysql_secure_installation</code>
+      </div>
+      <h3 class="">Install php</h3>
+      <div class="code">
+        <code class ='code'>sudo apt-get install php7.0 php7.0-mysql libapache2-mod-php7.0 php7.0-cli php7.0-cgi php7.0-gd</code> <br>
+        <code class ='code'>sudo nano /var/www/html/info.php</code>
+      </div>
+      <p>Noubliez pas les balises php /!\</p>
+      <div class="code">
+        <code class ='code'>phpinfo();</code>
+      </div>
+      <p>save et go check vers <a href="http://localhost/info.php">localhost info.php</a></p>
+      <h3 class="">Wordpress !</h3>
+      <div class="code">
+        <code class ='code'>wget -c http://wordpress.org/latest.tar.gz</code> <br>
+        <code class ='code'>tar -xzvf latest.tar.gz</code><br>
+        <code class ='code'>sudo rsync -av wordpress/* /var/www/html/</code><br>
+        <code class ='code'>sudo chown -R www-data:www-data /var/www/html/</code> <br>
+        <code class ='code'>sudo chmod -R 755 /var/www/html/</code>
+      </div>
+      <h3> WordPress Database</h3>
+      <div class="code">
+        <code class ='code'>mysql -u root -p </code> <br>
+        <code class ='code'>CREATE DATABASE wp_myblog;</code> <br>
+        <code class ='code'>GRANT ALL PRIVILEGES ON wp_myblog.* TO 'spawnk'@'localhost' IDENTIFIED BY 'MotdePasseBitch';</code> <br>
+        <code class ='code'>cd /var/www/html/</code><br>
+        <code class ='code'>sudo mv wp-config-sample.php wp-config.php</code><br>
+        <code class ='code'>sudo systemctl restart apache2.service </code><br>
+        <code class ='code'>sudo systemctl restart mysql.service </code>
+      </div>
+      <p>save et go check vers <a href="http://localhost/wp-admin/">localhost wordpress</a></p>
+    </div>
+    <h2 class="text-center">Ionic, cordova, nodejs !</h2>
+    <div class="col-md-offset-3">
+      <h3>Node js</h3>
+      <div class="code">
+        <code class ='code'>curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -</code> <br>
+        <code class ='code'>sudo apt-get install -y nodejs</code>
+      </div>
+      <h3>ionic</h3>
+      <div class="code">
+        <code class ='code'>npm install -g cordova ionic</code> <br>
+        <code class ='code'>sudo npm install -g cordova</code> <br>
+        <code class ='code'>ionic start --v2 myApp tabs</code>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center">Ruby/ROR/rbenv</h2>
+  <h3 class="text-center">rbenv</h3>
+  <div class="col-md-offset-3">
+    <div class="code">
+      <code class ='code'>sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev</code> <br>
+      <code class ='code'>git clone git://github.com/sstephenson/rbenv.git .rbenv</code> <br>
+      <code class ='code'>echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile</code> <br>
+      <code class ='code'>echo 'eval "$(rbenv init -)"' >> ~/.bash_profile</code> <br>
+      <code class ='code'>git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build</code> <br>
+      <code class ='code'>echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_profile</code> <br>
+      <code class ='code'>source ~/.bash_profile</code> <br>
+    </div>
+    <h3>Ruby</h3>
+    <div class="code">
+      <code class ='code'>rbenv install -l</code> <br>
+      <code class ='code'>rbenv install 2.3.1</code> <br>
+      <code class ='code'>rbenv global 2.3.1</code> <br>
+      <code class ='code'>ruby -v</code> <br>
+      <code class ='code'>echo "gem: --no-document" > ~/.gemrc</code> <br>
+      <code class ='code'>gem install bundler</code> <br>
+      <code class ='code'>gem env home</code> <br>
+    </div>
+    <h3>Rails</h3>
+    <div class="code">
+      <code class ='code'>gem install rails</code> <br>
+      <code class ='code'>gem search '^rails$' --all</code> <br>
+      <code class ='code'>gem install rails -v 4.2.7</code> <br>
+      <code class ='code'>rbenv rehash</code> <br>
+    </div>
+    <h3>Update rbenv</h3>
+    <div class="code">
+      <code class ='code'>cd ~/.rbenv</code> <br>
+      <code class ='code'>git pull</code> <br>
+    </div>
+  </div>
+
+</body>
+</html>
